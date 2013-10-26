@@ -21,7 +21,7 @@ class Rolodex
   end
 
   def self.display_contact(contact_to_display)
-    contacts.each { |i| puts "#{i.first_name} #{i.last_name}  Email: #{i.email}  Notes: #{i.note}" if i.id == contact_to_display }
+    contacts.each { |i| puts "ID: #{i.id}  #{i.first_name} #{i.last_name}  Email: #{i.email}  Notes: #{i.note}" if contact_to_display.downcase == i.first_name.downcase || contact_to_display.downcase == i.last_name.downcase  }
     puts
   end
 
@@ -40,4 +40,17 @@ class Rolodex
     end
     puts
   end
+
+  def self.display_name(id_to_edit)
+    contacts.each { |i| puts "Edit #{i.first_name} #{i.last_name}?" if id_to_edit == i.id }
+  end
+
+  # def self.edit_a_contact(id, field)
+  #   case field
+  #   when 1
+  #     contacts.map! { |i| i.first_name = }
+
+  # end
+
 end
+
