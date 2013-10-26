@@ -20,7 +20,24 @@ class Rolodex
     contacts.each {|i| puts "ID: #{i.id}  #{i.first_name} #{i.last_name}  Email: #{i.email}  Notes: #{i.note}" }
   end
 
-  def self.display_contact
-    contacts.each {}
+  def self.display_contact(contact_to_display)
+    contacts.each { |i| puts "#{i.first_name} #{i.last_name}  Email: #{i.email}  Notes: #{i.note}" if i.id == contact_to_display }
+    puts
+  end
+
+  def self.display_attribute(user_selected)
+    case user_selected
+    when 1
+      contacts.each { |i| puts i.id }
+    when 2
+      contacts.each { |i| puts i.first_name }
+    when 3
+      contacts.each { |i| puts i.last_name }
+    when 4
+      contacts.each { |i| puts i.email }
+    when 5
+      contacts.each { |i| puts i.note }
+    end
+    puts
   end
 end

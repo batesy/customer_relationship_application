@@ -33,7 +33,7 @@ class CRM
     when 2
       edit_contact
     when 3
-      display_contact
+      display_a_contact
     when 4
       display_all_contacts
     when 5
@@ -72,9 +72,10 @@ class CRM
   end
 
   def display_a_contact
+    display_all_contacts
     puts "Enter an ID to display: "
     contact_to_display = gets.to_i
-#    Rolodex.display_contact(contact_to_display)
+    Rolodex.display_contact(contact_to_display)
   end
 
   def edit_contact
@@ -86,7 +87,18 @@ class CRM
 #   Finish Later
   end
 
-
+  def display_attribute
+    puts "What do you want to see?"
+    puts "[1] ID"
+    puts "[2] First Name"
+    puts "[3] Last Name"
+    puts "[4] Email"
+    puts "[5] Notes"
+    puts "---------------"
+    puts "Enter a Number: "
+    user_selected = gets.to_i
+    Rolodex.display_attribute(user_selected)
+  end
 
 end
 
