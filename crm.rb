@@ -193,7 +193,7 @@ class CRM
 
   def return_to_menu
     puts
-    puts "Press Any Key To Return To Main Menu"
+    puts "Hit Enter To Return To Main Menu"
     gets.chomp
     puts "\e[H\e[2J"
   end
