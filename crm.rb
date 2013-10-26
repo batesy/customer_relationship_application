@@ -135,6 +135,33 @@ class CRM
       puts "First Name Successfully Changed!"
       puts "--------------------------------"
       return_to_menu
+    when 2
+      print "Enter new Last Name: "
+      new_last_name = gets.chomp
+      Rolodex.change_last_name(id_to_edit, new_last_name)
+      puts
+      puts "--------------------------------"
+      puts "Last Name Successfully Changed!"
+      puts "--------------------------------"
+      return_to_menu
+    when 3
+      print "Enter new Email: "
+      new_email = gets.chomp
+      Rolodex.change_email(id_to_edit, new_email)
+      puts
+      puts "---------------------------"
+      puts "Email Successfully Changed!"
+      puts "---------------------------"
+      return_to_menu
+    when 4
+      print "Enter new Note: "
+      new_note = gets.chomp
+      Rolodex.change_note(id_to_edit, new_note)
+      puts
+      puts "--------------------------"
+      puts "Note Successfully Changed!"
+      puts "--------------------------"
+      return_to_menu
     end
   end
 
