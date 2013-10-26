@@ -120,7 +120,21 @@ class CRM
       puts "[4] Note"
       puts "-----------------------------------"
       print "Make a choice: "
-      field to edit = gets.to_i
+      field_to_edit = gets.to_i
+    when 2
+      puts "\e[H\e[2J"
+      main_menu
+    end
+    case field_to_edit
+    when 1
+      print "Enter new First Name: "
+      new_first_name = gets.chomp
+      Rolodex.change_first_name(id_to_edit, new_first_name)
+      puts
+      puts "--------------------------------"
+      puts "First Name Successfully Changed!"
+      puts "--------------------------------"
+      return_to_menu
     end
   end
 

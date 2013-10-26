@@ -45,12 +45,9 @@ class Rolodex
     contacts.each { |i| puts "Edit #{i.first_name} #{i.last_name}?" if id_to_edit == i.id }
   end
 
-  # def self.edit_a_contact(id, field)
-  #   case field
-  #   when 1
-  #     contacts.map! { |i| i.first_name = }
-
-  # end
+  def self.change_first_name(id_to_edit, new_first_name)
+    contacts.each { |i| i.first_name = new_first_name if id_to_edit == i.id }
+  end
 
 end
 
