@@ -40,6 +40,7 @@ class CRM
       display_a_contact
     when 4
       display_all_contacts
+      return_to_menu
     when 5
       display_attribute
     when 6
@@ -71,12 +72,14 @@ class CRM
 
   def delete_a_contact
     display_all_contacts
-    puts "Which contact do you want to delete? Enter ID: "
+    puts
+    puts "Which contact do you want to delete?"
+    print "Enter ID: "
     contact_to_delete = gets.to_i
     Rolodex.delete_contact(contact_to_delete)
     puts "\e[H\e[2J"
     puts "    * Contact Deleted! *"
-    return_to_menu
+    main_menu
   end
 
   def display_all_contacts
@@ -95,22 +98,32 @@ class CRM
     print "Search for a name: "
     contact_to_display = gets.chomp
     puts "\e[H\e[2J"
+    puts "--------------"
+    puts "Search Results"
+    puts "--------------"
+    puts
     Rolodex.display_contact(contact_to_display)
+    puts
+    return_to_menu
   end
 
   def edit_contact
     puts "\e[H\e[2J"
     display_all_contacts
-    puts "--------------"
+    puts
     print "Enter ID of Contact to Edit: "
     id_to_edit = gets.to_i
+    puts
     Rolodex.display_name(id_to_edit)
     puts
     puts "[1] Yes"
     puts "[2] No"
+    puts 
+    print "Make a choice: "
     confirm = gets.to_i
     case confirm
     when 1
+      puts "\e[H\e[2J"  
       puts "-----------------------------------"
       puts "Which field would you like to edit?"
       puts "-----------------------------------"
@@ -127,41 +140,37 @@ class CRM
     end
     case field_to_edit
     when 1
+      puts
       print "Enter new First Name: "
       new_first_name = gets.chomp
       Rolodex.change_first_name(id_to_edit, new_first_name)
-      puts
-      puts "--------------------------------"
-      puts "First Name Successfully Changed!"
-      puts "--------------------------------"
-      return_to_menu
+      puts "\e[H\e[2J"
+      puts "* First Name Successfully Changed! *"
+      main_menu
     when 2
+      puts
       print "Enter new Last Name: "
       new_last_name = gets.chomp
       Rolodex.change_last_name(id_to_edit, new_last_name)
-      puts
-      puts "--------------------------------"
-      puts "Last Name Successfully Changed!"
-      puts "--------------------------------"
-      return_to_menu
+      puts "\e[H\e[2J"
+      puts "* Last Name Successfully Changed! *"
+      main_menu
     when 3
+      puts
       print "Enter new Email: "
       new_email = gets.chomp
       Rolodex.change_email(id_to_edit, new_email)
-      puts
-      puts "---------------------------"
-      puts "Email Successfully Changed!"
-      puts "---------------------------"
-      return_to_menu
+      puts "\e[H\e[2J"
+      puts "* Email Successfully Changed! *"
+      main_menu
     when 4
+      puts
       print "Enter new Note: "
       new_note = gets.chomp
       Rolodex.change_note(id_to_edit, new_note)
-      puts
-      puts "--------------------------"
-      puts "Note Successfully Changed!"
-      puts "--------------------------"
-      return_to_menu
+      puts "\e[H\e[2J"
+      puts "* Note Successfully Changed! *"
+      main_menu
     end
   end
 
@@ -175,10 +184,11 @@ class CRM
     puts "[4] Email"
     puts "[5] Notes"
     puts "---------------"
-    puts "Enter a Number: "
+    print "Make a Choice: "
     user_selected = gets.to_i
     puts
     Rolodex.display_attribute(user_selected)
+    return_to_menu
   end
 
   def return_to_menu
@@ -192,5 +202,6 @@ end
 
 
 gregforce = CRM.new("Gregforce")
+puts "\e[H\e[2J"
 gregforce.main_menu
 
